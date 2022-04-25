@@ -2,6 +2,7 @@ package com.ProjectActivity.importerSite.Entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "technologies_countries")
@@ -20,6 +21,7 @@ public class Country_Technology_Unit implements Serializable {
     private short year;
 
     private double its;
+
 
     public Country getCountry() {
         return country;
@@ -52,6 +54,7 @@ public class Country_Technology_Unit implements Serializable {
     public void setIts(double its) {
         this.its = its;
     }
+
 
     public Country_Technology_Unit(){
 
