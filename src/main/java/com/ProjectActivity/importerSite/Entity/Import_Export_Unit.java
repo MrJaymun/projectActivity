@@ -12,12 +12,12 @@ public class Import_Export_Unit implements Serializable {
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="country_id")
+    @JoinColumn(name="id")
     private Country importer;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="country_id")
+    @JoinColumn(name="id")
     private Country exporter;
 
     @ManyToOne(fetch = FetchType.LAZY)

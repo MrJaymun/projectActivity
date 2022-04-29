@@ -6,17 +6,20 @@ import java.util.Set;
 
 @Entity
 @Table(name = "technologies_countries")
+@IdClass(Country_Technology_PK.class)
 public class Country_Technology_Unit implements Serializable {
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="country_id")
+   // @JoinColumn(name="id")
     private Country country;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="technology_id")
+    //@JoinColumn(name="id")
     private Technology technology;
+
+
 
     private short year;
 
@@ -38,6 +41,8 @@ public class Country_Technology_Unit implements Serializable {
     public void setTechnology(Technology technology) {
         this.technology = technology;
     }
+
+
 
     public short getYear() {
         return year;

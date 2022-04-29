@@ -14,16 +14,16 @@ public class Product_Technology_Unit implements Serializable {
     private String product_name;
 
     @Id
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="technology_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="id")
     private Technology technology;
 
     @Id
     private double probability;
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="sitc4_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="sitc4")
     private Code_sitc4 sitc4;
 
     /*

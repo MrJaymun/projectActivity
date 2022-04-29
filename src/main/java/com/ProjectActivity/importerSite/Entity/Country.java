@@ -1,32 +1,44 @@
 package com.ProjectActivity.importerSite.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.io.Serializable;
+import java.util.Set;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "countries")
-public class Country {
+public class Country implements Serializable {
 
     @Id
-    private Long country_id;
+    private Long id;
 
-    private String country_name;
+    private String name;
 
-    public Long getCountry_id() {
-        return country_id;
+    /*
+    @OneToMany(mappedBy = "country")
+    private Set<Country_Technology_Unit> technology;
+
+     */
+
+    public Long getId() {
+        return id;
     }
 
-    public void setCountry_id(Long country_id) {
-        this.country_id = country_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getCountry_name() {
-        return country_name;
+    public String getName() {
+        return name;
     }
 
-    public void setCountry_name(String country_name) {
-        this.country_name = country_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Country(){
