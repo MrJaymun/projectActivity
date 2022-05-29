@@ -8,16 +8,16 @@ import java.util.Set;
 public class Code_sitc4 {
 
     @Id
-    private String sitc4_id;
+    private String sitc4;
 
     private String sitc4_name;
 
-    public String getSitc4_id() {
-        return sitc4_id;
+    public String getSitc4() {
+        return sitc4;
     }
 
-    public void setSitc4_id(String sitc4_id) {
-        this.sitc4_id = sitc4_id;
+    public void setSitc4(String sitc4) {
+        this.sitc4 = sitc4;
     }
 
     public String getSitc4_name() {
@@ -29,11 +29,18 @@ public class Code_sitc4 {
     }
 
 
+    public Set<Code_hs96> getHs96_elements() {
+        return hs96_elements;
+    }
+
+    public void setHs96_elements(Set<Code_hs96> hs96_elements) {
+        this.hs96_elements = hs96_elements;
+    }
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Sitc4toHS96",
-            joinColumns = {@JoinColumn(name = "sitc4_id", referencedColumnName = "sitc4_id")},
-            inverseJoinColumns = {@JoinColumn(name = "hs96_id", referencedColumnName = "hs96_id")}
+            joinColumns = {@JoinColumn(name = "sitc4", referencedColumnName = "sitc4")},
+            inverseJoinColumns = {@JoinColumn(name = "hs96", referencedColumnName = "hs96")}
     )
     private Set<Code_hs96> hs96_elements;
 

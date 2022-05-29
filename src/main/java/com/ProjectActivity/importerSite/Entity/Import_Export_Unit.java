@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "import_export_data")
+@IdClass(Import_Export_Unit_PK.class)
 public class Import_Export_Unit implements Serializable {
 
     @Id
@@ -12,17 +13,17 @@ public class Import_Export_Unit implements Serializable {
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id")
+    //@JoinColumn(name="id")
     private Country importer;
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id")
+    //@JoinColumn(name="id")
     private Country exporter;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="hs96_id")
-    private Code_hs96 hs96_id;
+    @JoinColumn(name="hs96")
+    private Code_hs96 hs96;
 
     private double value;
 
@@ -52,12 +53,12 @@ public class Import_Export_Unit implements Serializable {
         this.exporter = exporter;
     }
 
-    public Code_hs96 getHs96_id() {
-        return hs96_id;
+    public Code_hs96 getHs96id() {
+        return hs96;
     }
 
-    public void setHs96_id(Code_hs96 hs96_id) {
-        this.hs96_id = hs96_id;
+    public void setHs96(Code_hs96 hs96) {
+        this.hs96 = hs96;
     }
 
     public double getValue() {

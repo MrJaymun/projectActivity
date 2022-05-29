@@ -9,7 +9,7 @@ import java.util.Set;
 public class Code_hs96 implements Serializable {
 
     @Id
-    private String hs96_id;
+    private String hs96;
 
     private String hs96_name;
 
@@ -23,12 +23,12 @@ public class Code_hs96 implements Serializable {
 
 
 
-    public String getHs96_id() {
-        return hs96_id;
+    public String getHs96() {
+        return hs96;
     }
 
-    public void setHs96_id(String hs96_id) {
-        this.hs96_id = hs96_id;
+    public void setHs96(String hs96) {
+        this.hs96 = hs96;
     }
 
     public String getHs96_name() {

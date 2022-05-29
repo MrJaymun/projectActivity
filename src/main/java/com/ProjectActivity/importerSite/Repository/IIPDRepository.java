@@ -1,16 +1,14 @@
 package com.ProjectActivity.importerSite.Repository;
 
-import com.ProjectActivity.importerSite.Entity.Country;
 
+import com.ProjectActivity.importerSite.Entity.IIPD;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface CountryRepository extends JpaRepository<Country, Long> {
+public interface IIPDRepository extends JpaRepository<IIPD, Long> {
 
-    Country getById(Long id);
-    List<Country> findAll();
+    List<IIPD> findByYear(int year);
 }
-

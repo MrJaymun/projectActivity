@@ -10,12 +10,12 @@ import java.util.Set;
 public class Country_Technology_Unit implements Serializable {
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
    // @JoinColumn(name="id")
     private Country country;
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     //@JoinColumn(name="id")
     private Technology technology;
 

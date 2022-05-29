@@ -20,10 +20,6 @@ public class Technology {
     @OneToMany(mappedBy = "technology")
     private Set<Product_Technology_Unit> products;
 
-
-
-
-
     public Long getId() {
         return id;
     }
