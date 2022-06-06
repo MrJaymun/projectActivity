@@ -16,7 +16,7 @@ public class IPAD implements Serializable {
     @Id
     public int year;
     public double index;
-    public double dynamic;
+    public Double dynamic;
 
     public String getCountry() {
         return country;
@@ -42,11 +42,11 @@ public class IPAD implements Serializable {
         this.index = index;
     }
 
-    public double getDynamic() {
+    public Double getDynamic() {
         return dynamic;
     }
 
-    public void setDynamic(double dynamic) {
+    public void setDynamic(Double dynamic) {
         this.dynamic = dynamic;
     }
 

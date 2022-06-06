@@ -11,16 +11,12 @@ import com.ProjectActivity.importerSite.Service.CountryTechnologyService;
 import com.ProjectActivity.importerSite.Service.IIPDService;
 import com.ProjectActivity.importerSite.Service.Implementation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
-
+@CrossOrigin(origins="*")
 @RestController
-@RequestMapping("table")
 public class TableController {
 
 
@@ -55,7 +51,7 @@ public class TableController {
         return ipadService.countriesList(year);
     }
 
-    @GetMapping("getCountries")
+    @GetMapping("getITSCountries")
     public List<CountryDto> getCountries(){
         return countryService.countriesList();
     }

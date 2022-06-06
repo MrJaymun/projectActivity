@@ -5,9 +5,9 @@ public class IIPDDto {
     public String country;
     public int year;
     public double index;
-    public double dynamic;
+    public Double dynamic;
 
-    public IIPDDto(String country, int year, double index, double dynamic) {
+    public IIPDDto(String country, int year, double index, Double dynamic) {
         this.country = country;
         this.year = year;
         this.index = index;

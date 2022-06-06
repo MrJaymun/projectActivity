@@ -8,6 +8,8 @@ import com.ProjectActivity.importerSite.Service.IPADService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +23,17 @@ public class IPADServiceImpl implements IPADService {
         List<IPADDto> data = new ArrayList<>();
         var fromDb = repository.findByYear(year);
         for (var unit : fromDb){
-            data.add(new IPADDto(unit.country, unit.year, unit.index, unit.dynamic));
+
+            data.add(new IPADDto(unit.country, unit.year, this.round(unit.index, 2), unit.dynamic));
         }
         return data;
+    }
+
+    public  double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }

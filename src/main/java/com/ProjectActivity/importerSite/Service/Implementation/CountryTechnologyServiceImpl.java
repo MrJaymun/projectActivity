@@ -1,9 +1,6 @@
 package com.ProjectActivity.importerSite.Service.Implementation;
 
-import com.ProjectActivity.importerSite.Dto.ImportDto;
-import com.ProjectActivity.importerSite.Dto.ProductDto;
-import com.ProjectActivity.importerSite.Dto.ProductImportDto;
-import com.ProjectActivity.importerSite.Dto.TechnologyCountryDto;
+import com.ProjectActivity.importerSite.Dto.*;
 import com.ProjectActivity.importerSite.Entity.*;
 import com.ProjectActivity.importerSite.Repository.CountryRepository;
 import com.ProjectActivity.importerSite.Repository.ImportExportDataRepository;
@@ -70,11 +67,13 @@ public class CountryTechnologyServiceImpl implements CountryTechnologyService {
                 }
             }
             HashSet<String> usedFinal = new HashSet<>();
-            ArrayList<String> finalResult = new ArrayList();
+            ArrayList<Product> finalResult = new ArrayList();
+            int i = 1;
             for(String str : usedProducts){
                 if(!usedFinal.contains(str)){
                     usedFinal.add(str);
-                    finalResult.add(str);
+                    finalResult.add(new Product(i, str));
+                    i++;
                 }
             }
             finalData.add(new ImportDto(size, unit.name, unit.index, finalResult));
