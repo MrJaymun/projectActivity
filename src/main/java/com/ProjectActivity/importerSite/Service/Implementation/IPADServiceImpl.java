@@ -21,7 +21,7 @@ public class IPADServiceImpl implements IPADService {
     @Override
     public List<IPADDto> countriesList(int year) {
         List<IPADDto> data = new ArrayList<>();
-        var fromDb = repository.findByYear(year);
+        var fromDb = repository.findByYearOrderByIndexDesc(year);
         for (var unit : fromDb){
 
             data.add(new IPADDto(unit.country, unit.year, this.round(unit.index, 2), unit.dynamic));

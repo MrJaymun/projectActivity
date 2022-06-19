@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface IIPDRepository extends JpaRepository<IIPD, Long> {
 
-    List<IIPD> findByYear(int year);
+    List<IIPD> findByYearOrderByIndexDesc(int year);
 }

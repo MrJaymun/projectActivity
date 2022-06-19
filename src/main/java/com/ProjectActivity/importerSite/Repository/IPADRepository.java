@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface IPADRepository extends JpaRepository<IPAD, Long> {
 
-    List<IPAD> findByYear(int year);
+    List<IPAD> findByYearOrderByIndexDesc(int year);
 }
