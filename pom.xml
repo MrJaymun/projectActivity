@@ -50,8 +50,10 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+
 					<fork>true</fork>
 					<mainClass>com.ProjectActivity.importerSite.ImporterSiteApplication</mainClass>
+
 				</configuration>
 				<executions>
 					<execution>
