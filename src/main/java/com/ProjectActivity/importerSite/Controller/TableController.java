@@ -11,11 +11,14 @@ import com.ProjectActivity.importerSite.Service.CountryTechnologyService;
 import com.ProjectActivity.importerSite.Service.IIPDService;
 import com.ProjectActivity.importerSite.Service.Implementation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
-@CrossOrigin(origins="*")
+@CrossOrigin(exposedHeaders = {"Access-Control-Allow-Origin"}, allowCredentials = "true", originPatterns = "*")
 @RestController
 public class TableController {
 
@@ -41,10 +44,13 @@ public class TableController {
       return countryTechnologyService.productList(countryId, year);
     }
 
+    //@CrossOrigin(origins="http://localhost:13333")
+    @CrossOrigin(origins="https://yandex.ru")
     @GetMapping("getIIPDIndexes")
     public List<IIPDDto> getIIPDIndexes(@RequestParam("year") int year){
         return iipdService.countriesList(year);
     }
+
 
     @GetMapping("getIPADIndexes")
     public List<IPADDto> getIPADIndexes(@RequestParam("year") int year){
@@ -62,8 +68,12 @@ public class TableController {
     }
 
     @GetMapping("getIIPDYears")
-    public List<Integer> getIIPDYears(){
-        return yearService.yearsIIPDList();
+    public ResponseEntity<String> getIIPDYears(){
+        List<Integer> a = yearService.yearsIIPDList();
+        HttpHeaders c = new HttpHeaders();
+        c.add("Origin","https://yandex.ru");
+        ResponseEntity<String> b = new ResponseEntity<String>(a.toString(), c, HttpStatus.OK);
+        return b;
     }
 
     @GetMapping("getIPADYears")
