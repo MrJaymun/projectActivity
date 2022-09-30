@@ -76,7 +76,7 @@ public class TableController {
         return b;
     }
 
-    @GetMapping("getIPADYears")
+    @GetMapping("/api/v1/ipad/years")
     public List<Integer> getIPADYears(){
         return yearService.yearsIPADList();
     }
