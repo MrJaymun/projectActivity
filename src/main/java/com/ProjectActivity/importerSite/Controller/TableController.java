@@ -10,6 +10,7 @@ import com.ProjectActivity.importerSite.Repository.TechnologyRepository;
 import com.ProjectActivity.importerSite.Service.CountryTechnologyService;
 import com.ProjectActivity.importerSite.Service.IIPDService;
 import com.ProjectActivity.importerSite.Service.Implementation.*;
+import com.ProjectActivity.importerSite.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -37,6 +38,9 @@ public class TableController {
 
     @Autowired
     IPADServiceImpl ipadService;
+
+    @Autowired
+    UserService userService;
 
 
     @GetMapping("getITSIndexes")
@@ -81,4 +85,10 @@ public class TableController {
         return yearService.yearsIPADList();
     }
 
+    @GetMapping("aboba/getUser")
+    public UserDto getUser(@RequestParam("Login") String login, @RequestParam("Password") String password){
+        UserDto user = userService.getUser(login, password);
+        //Проверку что юзверь найден добавить
+        return user;
+    }
 }
