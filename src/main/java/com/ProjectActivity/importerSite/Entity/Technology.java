@@ -20,6 +20,17 @@ public class Technology {
     @OneToMany(mappedBy = "technology")
     private Set<Product_Technology_Unit> products;
 
+/*    public Set<Country_Technology_Unit> getCountriesTechs() {
+        return countriesTechs;
+    }
+
+    public void setCountriesTechs(Set<Country_Technology_Unit> countriesTechs) {
+        this.countriesTechs = countriesTechs;
+    }
+
+    @OneToMany(mappedBy = "technology")
+    private Set<Country_Technology_Unit> countriesTechs;
+*/
     public Long getId() {
         return id;
     }

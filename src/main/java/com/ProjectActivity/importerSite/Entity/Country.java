@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,11 +20,19 @@ public class Country implements Serializable {
 
     private String name;
 
-    /*
-    @OneToMany(mappedBy = "country")
-    private Set<Country_Technology_Unit> technology;
 
-     */
+    public List<Country_Technology_Unit> getCountryTechnology() {
+        return countryTechnology;
+    }
+
+    public void setCountryTechnology(List<Country_Technology_Unit> countryTechnology) {
+        this.countryTechnology = countryTechnology;
+    }
+
+    @OneToMany(mappedBy = "country")
+    private List<Country_Technology_Unit> countryTechnology;
+
+
 
     public Long getId() {
         return id;

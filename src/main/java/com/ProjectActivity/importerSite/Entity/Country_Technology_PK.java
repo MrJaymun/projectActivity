@@ -8,13 +8,24 @@ import java.io.Serializable;
 
 public class Country_Technology_PK implements Serializable {
 
-    @ManyToOne(fetch = FetchType.LAZY)
-   // @JoinColumn(name="id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="country_id")
     private Country country;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-   // @JoinColumn(name="id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="technology_id")
     private Technology technology;
+
+    public short getYear() {
+        return year;
+    }
+
+    public void setYear(short year) {
+        this.year = year;
+    }
+
+    @Id
+    private short year;
 
     public Country getCountry() {
         return country;
