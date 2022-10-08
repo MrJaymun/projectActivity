@@ -1,5 +1,5 @@
 package com.ProjectActivity.importerSite;
-
+/*
 import com.ProjectActivity.importerSite.Security.AuthenticationConfigConstants;
 import com.ProjectActivity.importerSite.Security.JWTAuthenticationFilter;
 import com.ProjectActivity.importerSite.Security.JWTAuthorizationFilter;
@@ -35,6 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 // this disables session creation on Spring Security
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
+
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
@@ -44,4 +45,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
        web.ignoring().antMatchers("/aboba/**");
     }
+
+
 }
+
+ */

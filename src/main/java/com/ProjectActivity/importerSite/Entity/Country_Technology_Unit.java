@@ -9,18 +9,21 @@ import java.util.Set;
 @IdClass(Country_Technology_PK.class)
 public class Country_Technology_Unit implements Serializable {
 
+
     @Id
     @ManyToOne(fetch = FetchType.EAGER)
-   // @JoinColumn(name="id")
+    //@JoinColumn(name="country_id")
     private Country country;
 
     @Id
     @ManyToOne(fetch = FetchType.EAGER)
-    //@JoinColumn(name="id")
+   //@JoinColumn(name="technology_id")
     private Technology technology;
 
 
 
+
+    @Id
     private short year;
 
     private double its;
@@ -41,6 +44,8 @@ public class Country_Technology_Unit implements Serializable {
     public void setTechnology(Technology technology) {
         this.technology = technology;
     }
+
+
 
 
 

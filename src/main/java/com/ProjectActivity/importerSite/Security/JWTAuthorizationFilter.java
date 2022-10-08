@@ -1,5 +1,5 @@
 package com.ProjectActivity.importerSite.Security;
-
+/*
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,7 +28,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
         SecurityContextHolder.getContext().setAuthentication(authentication);
         chain.doFilter(request, response);
     }
-    private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
+    private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) { ;
         String token = request.getHeader(AuthenticationConfigConstants.HEADER_STRING);
         if (token != null) {
             // parse the token.
@@ -44,3 +44,4 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
         return null;
     }
 }
+*/

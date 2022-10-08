@@ -16,4 +16,11 @@ public interface TechnologyCountryRepository extends JpaRepository<Country_Techn
 
     List<Country_Technology_Unit> findByCountryAndYear(Country country, short year);
 
+    List<Country_Technology_Unit> findByYear(short year);
+
+    List<Country_Technology_Unit> findByTechnologyAndYear(Technology technology, short year);
+
+
+    List<Country_Technology_Unit> findByTechnologyAndCountry(Technology technology, Country country);
+
 }
