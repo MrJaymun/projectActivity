@@ -1,6 +1,7 @@
 package com.ProjectActivity.importerSite.Dto;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TechnologyByCountryDto implements IndexCountryTechnologyDto {
@@ -12,21 +13,21 @@ public class TechnologyByCountryDto implements IndexCountryTechnologyDto {
 
 
 
-    public Map<Short, Double> getValues() {
+    public List<ListForYearIndexDto> getValues() {
         return values;
     }
 
-    public void setValues(Map<Short, Double> values) {
+    public void setValues(List<ListForYearIndexDto> values) {
         this.values = values;
     }
 
-    public TechnologyByCountryDto(Long id, String title, Map<Short, Double> values) {
+    public TechnologyByCountryDto(Long id, String title, List<ListForYearIndexDto> values) {
         this.id = id;
         this.title = title;
         this.values = values;
     }
 
-    private Map<Short, Double> values;
+    private List<ListForYearIndexDto> values;
 
     public Long getId() {
         return id;

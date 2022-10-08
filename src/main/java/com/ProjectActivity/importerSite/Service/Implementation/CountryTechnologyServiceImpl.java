@@ -92,12 +92,13 @@ public class CountryTechnologyServiceImpl implements CountryTechnologyService {
     }
 
     public List<IndexCountryTechnologyDto> getData(Long technologyId, Long countryId, Short year){
+
         if(countryId != null){
             if(year != null){
-                technologyByCountryAndYear(countryId, year);
+                return technologyByCountryAndYear(countryId, year);
             }
             if(technologyId != null){
-                technologyByTechnologyAndCountry(technologyId, countryId);
+                return technologyByTechnologyAndCountry(technologyId, countryId);
             }
             return technologyByCountry(countryId);
         }
@@ -122,15 +123,21 @@ public class CountryTechnologyServiceImpl implements CountryTechnologyService {
                 }
             }
             if (flag) {
-                Map<Short, Double> values = new HashMap<>();
+                List<ListForYearIndexDto> values = new ArrayList<>();
+
+
+                for (int i = 1996; i < 2021; i++) {
+                   values.add(new ListForYearIndexDto((short)i, 0.0));
+                }
+
                 for (Country_Technology_Unit taker : country.getCountryTechnology()) {
                     if (taker.getTechnology().getId() == unit.getTechnology().getId()) {
+                        values.get(taker.getYear()-1996).setIndex(taker.getIts());
 
-                        values.put(taker.getYear(), taker.getIts());
                     }
                 }
 
-                TechnologyByCountryDto finalUnit = new TechnologyByCountryDto(unit.getTechnology().getId(), unit.getTechnology().getName(), sortByComparator(values, false));
+                TechnologyByCountryDto finalUnit = new TechnologyByCountryDto(unit.getTechnology().getId(), unit.getTechnology().getName(), values);
                 result.add(finalUnit);
             }
 
@@ -163,34 +170,13 @@ public class CountryTechnologyServiceImpl implements CountryTechnologyService {
 
     @Override
     public List<IndexCountryTechnologyDto> findByTechnologyAndYear(long technologyId, short year) {
-        List<TechnologyByCountryAndYearDto> result = new ArrayList<>();
+        List<TechnologyByTechnologyAndYearDto> result = new ArrayList<>();
         var data = technologyCountryRepository.findByTechnologyAndYear(technologyRepository.getById(technologyId), year);
         for (Country_Technology_Unit unit : data) {
-            result.add(new TechnologyByCountryAndYearDto(unit.getCountry().getId(), unit.getCountry().getName(), unit.getIts()));
+            result.add(new TechnologyByTechnologyAndYearDto(unit.getCountry().getId(), unit.getCountry().getName(), unit.getIts()));
         }
 
         return new ArrayList<>(result);
-    }
-
-    private static Map<Short, Double> sortByComparator(Map<Short, Double> unsortMap, final boolean order) {
-
-        List<Entry<Short, Double>> list = new LinkedList<>(unsortMap.entrySet());
-
-        Collections.sort(list, (o1, o2) -> {
-            if (order) {
-                return o1.getKey().compareTo(o2.getKey());
-            } else {
-                return o2.getKey().compareTo(o1.getKey());
-            }
-        });
-
-
-        Map<Short, Double> sortedMap = new LinkedHashMap<Short, Double>();
-        for (Entry<Short, Double> entry : list) {
-            sortedMap.put(entry.getKey(), entry.getValue());
-        }
-
-        return sortedMap;
     }
 
 

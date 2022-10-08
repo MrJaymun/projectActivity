@@ -56,7 +56,7 @@ public class TableController {
         return technologyService.getTechnologies();
     }
 
-    @GetMapping("api/v1/iipd/export/indexes")
+    @GetMapping("api/v1/iipd/indexes")
     public List<IIPDDto> getIIPDIndexes(@RequestParam("year") int year){
         return iipdService.countriesList(year);
     }
@@ -79,5 +79,10 @@ public class TableController {
     @GetMapping("api/v1/its/indexes")
     public List<IndexCountryTechnologyDto> getData(@RequestParam(value = "technologyId", required = false) Long technologyId, @RequestParam(value = "countryId", required = false) Long countryId, @RequestParam(value = "year", required = false) Short year){
         return countryTechnologyService.getData(technologyId, countryId, year);
+    }
+
+    @GetMapping("api/v1/auth/profile")
+    public Object getData(){
+        return null;
     }
 }
