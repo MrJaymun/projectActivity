@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -28,6 +29,7 @@ public class TechnologyServiceImpl implements TechnologyService {
             TechnologyDto dto = new TechnologyDto(technology);
             dataDto.add(dto);
         }
+        Collections.sort(dataDto, TechnologyDto.COMPARE_BY_TITLE);
         return dataDto;
     }
 }

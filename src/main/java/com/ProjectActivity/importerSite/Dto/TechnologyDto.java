@@ -2,6 +2,8 @@ package com.ProjectActivity.importerSite.Dto;
 
 import com.ProjectActivity.importerSite.Entity.Technology;
 
+import java.util.Comparator;
+
 public class TechnologyDto {
 
     private Long id;
@@ -27,6 +29,8 @@ public class TechnologyDto {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public static final Comparator<TechnologyDto> COMPARE_BY_TITLE = (first, second) -> first.title.compareTo(second.title);
 
 
 }
