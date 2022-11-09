@@ -2,10 +2,7 @@ package com.ProjectActivity.importerSite.Service.Implementation;
 
 import com.ProjectActivity.importerSite.Dto.*;
 import com.ProjectActivity.importerSite.Entity.*;
-import com.ProjectActivity.importerSite.Repository.CountryRepository;
-import com.ProjectActivity.importerSite.Repository.ImportExportDataRepository;
-import com.ProjectActivity.importerSite.Repository.TechnologyCountryRepository;
-import com.ProjectActivity.importerSite.Repository.TechnologyRepository;
+import com.ProjectActivity.importerSite.Repository.*;
 import com.ProjectActivity.importerSite.Service.CountryTechnologyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +33,13 @@ public class CountryTechnologyServiceImpl implements CountryTechnologyService {
     @Autowired
     ImportExportDataRepository importExportDataRepository;
 
+    @Autowired
+    RawTeсhnologyITSRepository rawTeсhnologyITSRepository;
+
+    @Autowired
+    RawImportITSRepository rawImportITSRepository;
+
+    /*
     @Override
     public List<ImportDto> productList(long id, short year) {
         var data = technologyCountryRepository.findByCountryAndYear(countryRepository.getById(id), year);
@@ -91,13 +95,73 @@ public class CountryTechnologyServiceImpl implements CountryTechnologyService {
         return finalData;
     }
 
-    public List<IndexCountryTechnologyDto> getData(Long technologyId, Long countryId, Short year){
 
-        if(countryId != null){
-            if(year != null){
+     */
+    public List<RawTechnologyITS> productList1(long id, short year) {
+        List<RawTechnologyITS> technologies = rawTeсhnologyITSRepository.technology_data((int) id, year);
+        for (RawTechnologyITS tech : technologies) {
+            int i =1;
+            var array = tech.getProducts().substring(1, tech.getProducts().length()-1).split(",");
+            System.out.println(array);
+            if(array[0].equals("NULL")){
+                System.out.println("Мда");
+            }
+            for (String a : array){
+                System.out.print(a + " ");
+            }
+            System.out.println("\n");
+        }
+        return rawTeсhnologyITSRepository.technology_data((int) id, year);
+    }
+
+    public List<RawImportITS> productList2(long id, short year) {
+        return rawImportITSRepository.import_data((int) id, year);
+    }
+
+    public List<ImportDto> productList(long id, short year) {
+
+        List<RawTechnologyITS> technologies = rawTeсhnologyITSRepository.technology_data((int) id, year);
+        List<RawImportITS> nameList = rawImportITSRepository.import_data((int) id, year);
+        ArrayList<ImportDto> finalData = new ArrayList<>();
+        for (RawTechnologyITS tech : technologies) {
+            int i =1;
+            ArrayList<Product> productList = new ArrayList();
+            var array = tech.getProducts().substring(1, tech.getProducts().length()-1).split(",");
+            if(array[0].equals("NULL")){
+               finalData.add(new ImportDto(i, tech.getName(), tech.getIts(), productList));
+            }
+            else{
+                int j = 1;
+                for (String a : array){
+
+                    for (RawImportITS importITS : nameList){
+                        //т.к. массив отсортирован, можно заканчивать цикл
+                        if(!importITS.getCode().equals(a)){
+                            if(!productList.isEmpty()){
+                                break;
+                            }
+                        }
+                        else{
+                            productList.add(new Product(j, importITS.getName()));
+                            j++;
+                        }
+                    }
+                }
+                finalData.add(new ImportDto(i, tech.getName(), tech.getIts(), productList));
+            }
+            i++;
+        }
+        return finalData;
+    }
+
+
+    public List<IndexCountryTechnologyDto> getData(Long technologyId, Long countryId, Short year) {
+
+        if (countryId != null) {
+            if (year != null) {
                 return technologyByCountryAndYear(countryId, year);
             }
-            if(technologyId != null){
+            if (technologyId != null) {
                 return technologyByTechnologyAndCountry(technologyId, countryId);
             }
             return technologyByCountry(countryId);
@@ -126,13 +190,13 @@ public class CountryTechnologyServiceImpl implements CountryTechnologyService {
                 List<ListForYearIndexDto> values = new ArrayList<>();
 
 
-                for (int i = 1996; i < 2021; i++) {
-                   values.add(new ListForYearIndexDto((short)i, 0.0));
+                for (int i = 2000; i < 2021; i++) {
+                    values.add(new ListForYearIndexDto((short) i, 0.0));
                 }
 
                 for (Country_Technology_Unit taker : country.getCountryTechnology()) {
                     if (taker.getTechnology().getId() == unit.getTechnology().getId()) {
-                        values.get(taker.getYear()-1996).setIndex(taker.getIts());
+                        values.get(taker.getYear() - 2000).setIndex(taker.getIts());
 
                     }
                 }
@@ -158,7 +222,7 @@ public class CountryTechnologyServiceImpl implements CountryTechnologyService {
     }
 
     @Override
-    public List<IndexCountryTechnologyDto> technologyByTechnologyAndCountry( long technologyId, long countryId) {
+    public List<IndexCountryTechnologyDto> technologyByTechnologyAndCountry(long technologyId, long countryId) {
 
         List<TechnologyByTechnologyAndCountryDto> result = new ArrayList<>();
         var data = technologyCountryRepository.findByTechnologyAndCountry(technologyRepository.getById(technologyId), countryRepository.getById(countryId));

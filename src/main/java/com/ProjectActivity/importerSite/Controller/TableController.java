@@ -1,12 +1,17 @@
 package com.ProjectActivity.importerSite.Controller;
 
 import com.ProjectActivity.importerSite.Dto.*;
+import com.ProjectActivity.importerSite.Entity.Chin;
+import com.ProjectActivity.importerSite.Entity.RawImportITS;
+import com.ProjectActivity.importerSite.Entity.RawTechnologyITS;
+import com.ProjectActivity.importerSite.Service.ChinService;
 import com.ProjectActivity.importerSite.Service.Implementation.*;
 import com.ProjectActivity.importerSite.Service.TechnologyService;
 import com.ProjectActivity.importerSite.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.List;
 @CrossOrigin(exposedHeaders = {"Access-Control-Allow-Origin"}, allowCredentials = "true", originPatterns = "*")
@@ -35,10 +40,25 @@ public class TableController {
     @Autowired
     TechnologyService technologyService;
 
+    @Autowired
+    ChinImpl chinService;
 
     @GetMapping("api/v1/its/export/indexes")
+    @Transactional
     public List<ImportDto> getITSIndexes(@RequestParam("countryId") long countryId, @RequestParam("year") short year){
       return countryTechnologyService.productList(countryId, year);
+    }
+
+    @GetMapping("1")
+    @Transactional
+    public List<RawTechnologyITS> getITSIndexes22(@RequestParam("countryId") long countryId, @RequestParam("year") short year){
+        return countryTechnologyService.productList1(countryId, year);
+    }
+
+    @GetMapping("2")
+    @Transactional
+    public List<RawImportITS> getITSIndexes26(@RequestParam("countryId") long countryId, @RequestParam("year") short year){
+        return countryTechnologyService.productList2(countryId,year);
     }
 
     @GetMapping("api/v1/its/countries")
