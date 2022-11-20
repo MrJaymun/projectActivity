@@ -85,16 +85,6 @@ public class TableController {
 		return yearService.yearsIIPDList();
 	}
 
-	@GetMapping("api/v1/ipad/indexes")
-	public List<IPADDto> getIPADIndexes(@RequestParam("year") int year) {
-		return ipadService.countriesList(year);
-	}
-
-	@GetMapping("api/v1/ipad/years")
-	public List<Integer> getIPADYears() {
-		return yearService.yearsIPADList();
-	}
-
 	@GetMapping("api/v1/its/indexes")
 	public List<IndexCountryTechnologyDto> getData(
 		@RequestParam(value = "technologyId", required = false) Long technologyId,
@@ -102,10 +92,5 @@ public class TableController {
 		@RequestParam(value = "year", required = false) Short year
 	) {
 		return countryTechnologyService.getData(technologyId, countryId, year);
-	}
-
-	@GetMapping("api/v1/auth/profile")
-	public Object getData() {
-		return null;
 	}
 }
