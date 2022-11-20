@@ -10,16 +10,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TechnologyCountryRepository
-	extends JpaRepository<Country_Technology_Unit, Long> {
+public interface TechnologyCountryRepository extends JpaRepository<Country_Technology_Unit, Long> {
 	List<Country_Technology_Unit> findByCountryAndYear(Country country, short year);
 
 	List<Country_Technology_Unit> findByYear(short year);
 
 	List<Country_Technology_Unit> findByTechnologyAndYear(Technology technology, short year);
 
-	List<Country_Technology_Unit> findByTechnologyAndCountry(
-		Technology technology,
-		Country country
-	);
+	List<Country_Technology_Unit> findByTechnologyAndCountry(Technology technology, Country country);
 }

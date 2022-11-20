@@ -14,10 +14,7 @@ public interface CountryTechnologyService {
 	List<IndexCountryTechnologyDto> technologyByCountryAndYear(long countryId, short year);
 
 	//А сами вот и придумывайте названия
-	List<IndexCountryTechnologyDto> technologyByTechnologyAndCountry(
-		long technologyId,
-		long countryId
-	);
+	List<IndexCountryTechnologyDto> technologyByTechnologyAndCountry(long technologyId, long countryId);
 
 	List<IndexCountryTechnologyDto> findByTechnologyAndYear(long technologyId, short year);
 }

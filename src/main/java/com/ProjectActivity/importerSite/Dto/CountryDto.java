@@ -12,6 +12,5 @@ public class CountryDto {
 		this.title = title;
 	}
 
-	public static final Comparator<CountryDto> COMPARE_BY_NAME = (first, second) ->
-		first.title.compareTo(second.title);
+	public static final Comparator<CountryDto> COMPARE_BY_NAME = (first, second) -> first.title.compareTo(second.title);
 }

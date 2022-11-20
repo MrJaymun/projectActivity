@@ -89,9 +89,10 @@
 				<version>0.16</version>
 				<configuration>
 					<prettierJavaVersion>1.5.0</prettierJavaVersion>
-					<printWidth>90</printWidth>
+					<printWidth>120</printWidth>
 					<tabWidth>1</tabWidth>
 					<useTabs>true</useTabs>
+					<endOfLine>crlf</endOfLine>
 					<ignoreConfigFile>true</ignoreConfigFile>
 					<ignoreEditorConfig>true</ignoreEditorConfig>
 					<inputGlobs>
@@ -102,24 +103,11 @@
 					<execution>
 						<phase>validate</phase>
 						<goals>
-							<goal>${plugin.prettier.goal}</goal>
+							<goal>write</goal>
 						</goals>
 					</execution>
 				</executions>
 			</plugin>
 		</plugins>
 	</build>
-	<profiles>
-		<profile>
-			<id>travis</id>
-			<activation>
-				<property>
-					<name>env.TRAVIS</name>
-				</property>
-			</activation>
-			<properties>
-				<plugin.prettier.goal>check</plugin.prettier.goal>
-			</properties>
-		</profile>
-	</profiles>
 </project>

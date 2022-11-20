@@ -34,8 +34,7 @@ public class DataConfig {
 	private static final String PROP_DATABASE_USERNAME = "db.username";
 	private static final String PROP_HIBERNATE_DIALECT = "db.hibernate.dialect";
 	private static final String PROP_HIBERNATE_SHOW_SQL = "db.hibernate.show_sql";
-	private static final String PROP_ENTITYMANAGER_PACKAGES_TO_SCAN =
-		"db.entitymanager.packages.to.scan";
+	private static final String PROP_ENTITYMANAGER_PACKAGES_TO_SCAN = "db.entitymanager.packages.to.scan";
 	private static final String PROP_HIBERNATE_HBM2DDL_AUTO = "db.hibernate.hbm2ddl.auto";
 
 	@Resource
@@ -57,12 +56,8 @@ public class DataConfig {
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 		entityManagerFactoryBean.setDataSource(dataSource());
-		entityManagerFactoryBean.setPersistenceProviderClass(
-			HibernatePersistenceProvider.class
-		);
-		entityManagerFactoryBean.setPackagesToScan(
-			env.getRequiredProperty(PROP_ENTITYMANAGER_PACKAGES_TO_SCAN)
-		);
+		entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
+		entityManagerFactoryBean.setPackagesToScan(env.getRequiredProperty(PROP_ENTITYMANAGER_PACKAGES_TO_SCAN));
 
 		entityManagerFactoryBean.setJpaProperties(getHibernateProperties());
 
@@ -85,14 +80,8 @@ public class DataConfig {
 	private Properties getHibernateProperties() {
 		Properties properties = new Properties();
 		properties.put(PROP_HIBERNATE_DIALECT, env.getRequiredProperty(PROP_HIBERNATE_DIALECT));
-		properties.put(
-			PROP_HIBERNATE_SHOW_SQL,
-			env.getRequiredProperty(PROP_HIBERNATE_SHOW_SQL)
-		);
-		properties.put(
-			PROP_HIBERNATE_HBM2DDL_AUTO,
-			env.getRequiredProperty(PROP_HIBERNATE_HBM2DDL_AUTO)
-		);
+		properties.put(PROP_HIBERNATE_SHOW_SQL, env.getRequiredProperty(PROP_HIBERNATE_SHOW_SQL));
+		properties.put(PROP_HIBERNATE_HBM2DDL_AUTO, env.getRequiredProperty(PROP_HIBERNATE_HBM2DDL_AUTO));
 		properties.put("hibernate.show_sql", true);
 		return properties;
 	}

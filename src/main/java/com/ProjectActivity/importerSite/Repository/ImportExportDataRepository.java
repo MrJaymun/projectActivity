@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ImportExportDataRepository
-	extends JpaRepository<Import_Export_Unit, Long> {
+public interface ImportExportDataRepository extends JpaRepository<Import_Export_Unit, Long> {
 	List<Import_Export_Unit> findByImporterAndYear(Country importer, short year);
 }

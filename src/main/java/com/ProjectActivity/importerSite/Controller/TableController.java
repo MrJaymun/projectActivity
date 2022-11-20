@@ -11,11 +11,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(
-	exposedHeaders = { "Access-Control-Allow-Origin" },
-	allowCredentials = "true",
-	originPatterns = "*"
-)
+@CrossOrigin(exposedHeaders = { "Access-Control-Allow-Origin" }, allowCredentials = "true", originPatterns = "*")
 @RestController
 public class TableController {
 
@@ -42,10 +38,7 @@ public class TableController {
 
 	@GetMapping("api/v1/its/export/indexes")
 	@Transactional
-	public List<ImportDto> getITSIndexes(
-		@RequestParam("countryId") long countryId,
-		@RequestParam("year") short year
-	) {
+	public List<ImportDto> getITSIndexes(@RequestParam("countryId") long countryId, @RequestParam("year") short year) {
 		return countryTechnologyService.productList(countryId, year);
 	}
 

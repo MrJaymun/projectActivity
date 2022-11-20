@@ -96,16 +96,10 @@ public class CountryTechnologyServiceImpl implements CountryTechnologyService {
 
      */
 	public List<RawTechnologyITS> productList1(long id, short year) {
-		List<RawTechnologyITS> technologies = rawTeсhnologyITSRepository.technology_data(
-			(int) id,
-			year
-		);
+		List<RawTechnologyITS> technologies = rawTeсhnologyITSRepository.technology_data((int) id, year);
 		for (RawTechnologyITS tech : technologies) {
 			int i = 1;
-			var array = tech
-				.getProducts()
-				.substring(1, tech.getProducts().length() - 1)
-				.split(",");
+			var array = tech.getProducts().substring(1, tech.getProducts().length() - 1).split(",");
 			System.out.println(array);
 			if (array[0].equals("NULL")) {
 				System.out.println("Мда");
@@ -123,19 +117,13 @@ public class CountryTechnologyServiceImpl implements CountryTechnologyService {
 	}
 
 	public List<ImportDto> productList(long id, short year) {
-		List<RawTechnologyITS> technologies = rawTeсhnologyITSRepository.technology_data(
-			(int) id,
-			year
-		);
+		List<RawTechnologyITS> technologies = rawTeсhnologyITSRepository.technology_data((int) id, year);
 		List<RawImportITS> nameList = rawImportITSRepository.import_data((int) id, year);
 		ArrayList<ImportDto> finalData = new ArrayList<>();
 		for (RawTechnologyITS tech : technologies) {
 			int i = 1;
 			ArrayList<Product> productList = new ArrayList();
-			var array = tech
-				.getProducts()
-				.substring(1, tech.getProducts().length() - 1)
-				.split(",");
+			var array = tech.getProducts().substring(1, tech.getProducts().length() - 1).split(",");
 			if (array[0].equals("NULL")) {
 				finalData.add(new ImportDto(i, tech.getName(), tech.getIts(), productList));
 			} else {
@@ -160,11 +148,7 @@ public class CountryTechnologyServiceImpl implements CountryTechnologyService {
 		return finalData;
 	}
 
-	public List<IndexCountryTechnologyDto> getData(
-		Long technologyId,
-		Long countryId,
-		Short year
-	) {
+	public List<IndexCountryTechnologyDto> getData(Long technologyId, Long countryId, Short year) {
 		if (countryId != null) {
 			if (year != null) {
 				return technologyByCountryAndYear(countryId, year);
@@ -215,22 +199,12 @@ public class CountryTechnologyServiceImpl implements CountryTechnologyService {
 	}
 
 	@Override
-	public List<IndexCountryTechnologyDto> technologyByCountryAndYear(
-		long countryId,
-		short year
-	) {
+	public List<IndexCountryTechnologyDto> technologyByCountryAndYear(long countryId, short year) {
 		List<TechnologyByCountryAndYearDto> result = new ArrayList<>();
-		var data = technologyCountryRepository.findByCountryAndYear(
-			countryRepository.getById(countryId),
-			year
-		);
+		var data = technologyCountryRepository.findByCountryAndYear(countryRepository.getById(countryId), year);
 		for (Country_Technology_Unit unit : data) {
 			result.add(
-				new TechnologyByCountryAndYearDto(
-					unit.getTechnology().getId(),
-					unit.getTechnology().getName(),
-					unit.getIts()
-				)
+				new TechnologyByCountryAndYearDto(unit.getTechnology().getId(), unit.getTechnology().getName(), unit.getIts())
 			);
 		}
 
@@ -238,10 +212,7 @@ public class CountryTechnologyServiceImpl implements CountryTechnologyService {
 	}
 
 	@Override
-	public List<IndexCountryTechnologyDto> technologyByTechnologyAndCountry(
-		long technologyId,
-		long countryId
-	) {
+	public List<IndexCountryTechnologyDto> technologyByTechnologyAndCountry(long technologyId, long countryId) {
 		List<TechnologyByTechnologyAndCountryDto> result = new ArrayList<>();
 		var data = technologyCountryRepository.findByTechnologyAndCountry(
 			technologyRepository.getById(technologyId),
@@ -254,22 +225,12 @@ public class CountryTechnologyServiceImpl implements CountryTechnologyService {
 	}
 
 	@Override
-	public List<IndexCountryTechnologyDto> findByTechnologyAndYear(
-		long technologyId,
-		short year
-	) {
+	public List<IndexCountryTechnologyDto> findByTechnologyAndYear(long technologyId, short year) {
 		List<TechnologyByTechnologyAndYearDto> result = new ArrayList<>();
-		var data = technologyCountryRepository.findByTechnologyAndYear(
-			technologyRepository.getById(technologyId),
-			year
-		);
+		var data = technologyCountryRepository.findByTechnologyAndYear(technologyRepository.getById(technologyId), year);
 		for (Country_Technology_Unit unit : data) {
 			result.add(
-				new TechnologyByTechnologyAndYearDto(
-					unit.getCountry().getId(),
-					unit.getCountry().getName(),
-					unit.getIts()
-				)
+				new TechnologyByTechnologyAndYearDto(unit.getCountry().getId(), unit.getCountry().getName(), unit.getIts())
 			);
 		}
 
