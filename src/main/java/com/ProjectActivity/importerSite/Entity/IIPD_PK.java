@@ -1,30 +1,29 @@
 package com.ProjectActivity.importerSite.Entity;
 
-import javax.persistence.Id;
 import java.io.Serializable;
+import javax.persistence.Id;
 
 public class IIPD_PK implements Serializable {
 
-    @Id
-    public String country;
-    @Id
-    public int year;
+	@Id
+	public String country;
 
-    public String getCountry() {
-        return country;
-    }
+	@Id
+	public int year;
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
+	public String getCountry() {
+		return country;
+	}
 
-    public int getYear() {
-        return year;
-    }
+	public void setCountry(String country) {
+		this.country = country;
+	}
 
-    public void setYear(int year) {
-        this.year = year;
-    }
+	public int getYear() {
+		return year;
+	}
 
-
+	public void setYear(int year) {
+		this.year = year;
+	}
 }

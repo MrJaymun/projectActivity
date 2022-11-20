@@ -6,27 +6,24 @@ import javax.persistence.Id;
 @Entity
 public class RawImportITS {
 
-    String code;
+	String code;
 
-    @Id
-    String name;
+	@Id
+	String name;
 
-    public String getCode() {
-        return code;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-
+	public void setName(String name) {
+		this.name = name;
+	}
 }

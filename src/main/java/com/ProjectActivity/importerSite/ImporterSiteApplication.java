@@ -10,5 +10,4 @@ public class ImporterSiteApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ImporterSiteApplication.class, args);
 	}
-
 }

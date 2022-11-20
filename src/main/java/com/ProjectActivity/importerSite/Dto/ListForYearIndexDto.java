@@ -1,28 +1,29 @@
 package com.ProjectActivity.importerSite.Dto;
 
 public class ListForYearIndexDto {
-    private short year;
 
-    public short getYear() {
-        return year;
-    }
+	private short year;
 
-    public void setYear(short year) {
-        this.year = year;
-    }
+	public short getYear() {
+		return year;
+	}
 
-    public double getIndex() {
-        return index;
-    }
+	public void setYear(short year) {
+		this.year = year;
+	}
 
-    public void setIndex(double index) {
-        this.index = index;
-    }
+	public double getIndex() {
+		return index;
+	}
 
-    private double index;
+	public void setIndex(double index) {
+		this.index = index;
+	}
 
-    public ListForYearIndexDto(short year, double index) {
-        this.year = year;
-        this.index = index;
-    }
+	private double index;
+
+	public ListForYearIndexDto(short year, double index) {
+		this.year = year;
+		this.index = index;
+	}
 }

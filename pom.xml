@@ -6,16 +6,17 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.6.6</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>com.ProjectActivity</groupId>
 	<artifactId>importerSite</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>importerSite</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Indexes</description>
 	<properties>
 		<java.version>11</java.version>
 		<start-class>com.ProjectActivity.importerSite.ImporterSiteApplication</start-class>
+		<plugin.prettier.goal>write</plugin.prettier.goal>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -26,7 +27,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
@@ -52,17 +52,14 @@
 			<version>3.11.0</version>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-
 					<fork>true</fork>
 					<mainClass>com.ProjectActivity.importerSite.ImporterSiteApplication</mainClass>
-
 				</configuration>
 				<executions>
 					<execution>
@@ -86,7 +83,43 @@
 					</archive>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>com.hubspot.maven.plugins</groupId>
+				<artifactId>prettier-maven-plugin</artifactId>
+				<version>0.16</version>
+				<configuration>
+					<prettierJavaVersion>1.5.0</prettierJavaVersion>
+					<printWidth>90</printWidth>
+					<tabWidth>1</tabWidth>
+					<useTabs>true</useTabs>
+					<ignoreConfigFile>true</ignoreConfigFile>
+					<ignoreEditorConfig>true</ignoreEditorConfig>
+					<inputGlobs>
+						<inputGlob>src/main/java/**/*.java</inputGlob>
+					</inputGlobs>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>${plugin.prettier.goal}</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-
+	<profiles>
+		<profile>
+			<id>travis</id>
+			<activation>
+				<property>
+					<name>env.TRAVIS</name>
+				</property>
+			</activation>
+			<properties>
+				<plugin.prettier.goal>check</plugin.prettier.goal>
+			</properties>
+		</profile>
+	</profiles>
 </project>
