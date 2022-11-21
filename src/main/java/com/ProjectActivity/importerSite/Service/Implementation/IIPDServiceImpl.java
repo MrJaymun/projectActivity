@@ -19,7 +19,7 @@ public class IIPDServiceImpl implements IIPDService {
 		List<IIPDDto> data = new ArrayList<>();
 		var fromDb = repository.findByYearOrderByIndexDesc(year);
 		for (var unit : fromDb) {
-			data.add(new IIPDDto(unit.country, unit.year, unit.index, unit.dynamic));
+			data.add(new IIPDDto(unit.country, unit.year, unit.index, unit.dynamic, unit.alpha3));
 		}
 		return data;
 	}

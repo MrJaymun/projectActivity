@@ -19,6 +19,16 @@ public class Country implements Serializable {
 
 	private String name;
 
+	public String getAlpha3() {
+		return alpha3;
+	}
+
+	public void setAlpha3(String alpha3) {
+		this.alpha3 = alpha3;
+	}
+
+	private String alpha3;
+
 	public List<Country_Technology_Unit> getCountryTechnology() {
 		return countryTechnology;
 	}

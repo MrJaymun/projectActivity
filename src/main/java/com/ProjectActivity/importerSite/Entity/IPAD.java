@@ -20,6 +20,16 @@ public class IPAD implements Serializable {
 	public double index;
 	public Double dynamic;
 
+	public String getAlpha3() {
+		return alpha3;
+	}
+
+	public void setAlpha3(String alpha3) {
+		this.alpha3 = alpha3;
+	}
+
+	public String alpha3;
+
 	public String getCountry() {
 		return country;
 	}
