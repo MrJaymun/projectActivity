@@ -6,44 +6,38 @@ import java.util.Map;
 
 public class TechnologyByCountryDto implements IndexCountryTechnologyDto {
 
+	private Long id;
+	private String title;
 
+	public List<ListForYearIndexDto> getValues() {
+		return values;
+	}
 
-    private Long id;
-    private String title;
+	public void setValues(List<ListForYearIndexDto> values) {
+		this.values = values;
+	}
 
+	public TechnologyByCountryDto(Long id, String title, List<ListForYearIndexDto> values) {
+		this.id = id;
+		this.title = title;
+		this.values = values;
+	}
 
+	private List<ListForYearIndexDto> values;
 
-    public List<ListForYearIndexDto> getValues() {
-        return values;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setValues(List<ListForYearIndexDto> values) {
-        this.values = values;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public TechnologyByCountryDto(Long id, String title, List<ListForYearIndexDto> values) {
-        this.id = id;
-        this.title = title;
-        this.values = values;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    private List<ListForYearIndexDto> values;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-
+	public void setTitle(String title) {
+		this.title = title;
+	}
 }

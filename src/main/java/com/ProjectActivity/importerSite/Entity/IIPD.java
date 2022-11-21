@@ -1,54 +1,54 @@
 package com.ProjectActivity.importerSite.Entity;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "iipd")
 @IdClass(IIPD_PK.class)
 public class IIPD implements Serializable {
 
-    @Id
-    public String country;
-    @Id
-    public int year;
-    public double index;
-    public Double dynamic;
+	@Id
+	public String country;
 
-    public String getCountry() {
-        return country;
-    }
+	@Id
+	public int year;
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
+	public double index;
+	public Double dynamic;
 
-    public int getYear() {
-        return year;
-    }
+	public String getCountry() {
+		return country;
+	}
 
-    public void setYear(int year) {
-        this.year = year;
-    }
+	public void setCountry(String country) {
+		this.country = country;
+	}
 
-    public double getIndex() {
-        return index;
-    }
+	public int getYear() {
+		return year;
+	}
 
-    public void setIndex(double index) {
-        this.index = index;
-    }
+	public void setYear(int year) {
+		this.year = year;
+	}
 
-    public Double getDynamic() {
-        return dynamic;
-    }
+	public double getIndex() {
+		return index;
+	}
 
-    public void setDynamic(Double dynamic) {
-        this.dynamic = dynamic;
-    }
+	public void setIndex(double index) {
+		this.index = index;
+	}
 
+	public Double getDynamic() {
+		return dynamic;
+	}
 
+	public void setDynamic(Double dynamic) {
+		this.dynamic = dynamic;
+	}
 }
