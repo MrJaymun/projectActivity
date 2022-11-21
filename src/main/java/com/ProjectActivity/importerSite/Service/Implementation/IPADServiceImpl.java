@@ -22,7 +22,7 @@ public class IPADServiceImpl implements IPADService {
 		List<IPADDto> data = new ArrayList<>();
 		var fromDb = repository.findByYearOrderByIndexDesc(year);
 		for (var unit : fromDb) {
-			data.add(new IPADDto(unit.country, unit.year, this.round(unit.index, 2), unit.dynamic));
+			data.add(new IPADDto(unit.country, unit.year, this.round(unit.index, 2), unit.dynamic, unit.alpha3));
 		}
 		return data;
 	}
