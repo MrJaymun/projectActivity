@@ -19,7 +19,7 @@ public class CountryServiceImpl implements CountryService {
 		ArrayList<CountryDto> dataDto = new ArrayList<>();
 		var data = countryRepository.findAll();
 		for (Country country : data) {
-			CountryDto dto = new CountryDto(Math.toIntExact(country.getId()), country.getName(), country.getAlpha3());
+			CountryDto dto = new CountryDto(Math.toIntExact(country.getId()), country.getName());
 			dataDto.add(dto);
 		}
 		Collections.sort(dataDto, CountryDto.COMPARE_BY_NAME);

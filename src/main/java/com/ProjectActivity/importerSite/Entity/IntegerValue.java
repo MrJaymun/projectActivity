@@ -7,16 +7,25 @@ import javax.persistence.Id;
 public class IntegerValue {
 
 
-	public int getValue() {
-		return value;
+	public int getId() {
+		return id;
 	}
 
-	public void setValue(int value) {
-		this.value = value;
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Id
-	int value;
+	int id;
+	String name;
 
 
 }
