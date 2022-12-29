@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;
+import java.io.IOException;
 import java.util.List;
 
 @CrossOrigin(exposedHeaders = { "Access-Control-Allow-Origin" }, allowCredentials = "true", originPatterns = "*")
@@ -28,5 +29,11 @@ public class ScienceController {
     @Transactional
     public String getH2(@RequestParam("countryId") int countryId, @RequestParam("year") short year, @RequestParam("technology") short technology) {
         return scienceService.h2(countryId, year, technology);
+    }
+
+    @GetMapping("api/v1/magic")
+    @Transactional
+    public void doMagic() throws IOException {
+        scienceService.doMagic();
     }
 }

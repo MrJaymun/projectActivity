@@ -11,8 +11,8 @@ import java.util.List;
 @Repository
 public interface ScienceRepository extends JpaRepository<IntegerValue, Long> {
 	@Procedure("h1")
-	List<Integer> h1(int countryId, int year);
+	List<IntegerValue> h1(int countryId, int year);
 
 	@Procedure("h2")
-	List<Integer> h2(int countryId, int year, int technology);
+	List<IntegerValue> h2(int countryId, int year, int technology);
 }
